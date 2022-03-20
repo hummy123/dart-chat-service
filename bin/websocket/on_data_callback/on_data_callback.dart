@@ -9,6 +9,7 @@ void onDataCallback(message, WebSocketChannel webSocket) {
   try {
     // convert string to map object
     Map<String, dynamic> data = jsonDecode(message);
+    print(data);
 
     // if there is a connect key (which means set up),
     // then get id and add to our list of clients
@@ -17,7 +18,7 @@ void onDataCallback(message, WebSocketChannel webSocket) {
     }
     // if there is a room key, then this is a chat message.
     else if (data.containsKey("room")) {
-      handleMessage(webSocket, data);
+      handleMessage(data);
     }
   } catch (err) {
     print(err);

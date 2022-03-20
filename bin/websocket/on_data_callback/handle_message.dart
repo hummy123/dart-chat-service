@@ -1,11 +1,9 @@
-import 'package:web_socket_channel/web_socket_channel.dart';
-
 import '../connected_clients.dart';
 import '../mongodb/insert_to_db.dart';
 import '../send_message.dart';
 
 // this function handles messages received from websockets
-void handleMessage(WebSocketChannel webSocket, Map<String, dynamic> data) async {
+void handleMessage(Map<String, dynamic> data) async {
   // Iterate over list.
   String room = data["room"];
 

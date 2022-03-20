@@ -26,9 +26,9 @@ void main() async {
   });
 
   var portEnv = Platform.environment['PORT'];
-  var port = portEnv == null ? 8080 : int.parse(portEnv);
+  var port = portEnv == null ? 9999 : int.parse(portEnv);
 
-  shelf_io.serve(handler, '0.0.0.0', port).then((server) {
+  shelf_io.serve(handler, 'localhost', port).then((server) {
     print('Serving at ws://${server.address.host}:${server.port}');
   });
 
