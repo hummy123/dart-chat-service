@@ -18,12 +18,12 @@ void handleMessage(Map<String, dynamic> data) async {
     sendMessage(staff, data);
   });
 
-  // Save message to db.
   // Note: timestamp being a date object
   // allows us to sort by date on mongodb.
   // So we convert it to DateTime if it is not already.
-  await insertToDb({
-    ...data,
-    "timestamp": DateTime.parse(data["timestamp"]),
-  });
+  Map<String, dynamic> dbObject = data;
+  if (dbObject["timestamp"] is String) {
+    dbObject["timestamp"] = DateTime.parse(dbObject["timestamp"]);
+  }
+  await insertToDb(dbObject);
 }
