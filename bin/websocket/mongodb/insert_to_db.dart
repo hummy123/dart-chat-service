@@ -1,5 +1,9 @@
 import 'database.dart';
 
 Future<void> insertToDb(Map<String, dynamic> object) async {
-  await collection.insertOne(object);
+  try {
+    await collection.insertOne(object);
+  } catch (err) {
+    print(err);
+  }
 }
